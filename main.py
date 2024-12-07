@@ -38,7 +38,11 @@ def fetch_news():
 async def on_ready():
       print (f"👩{bot.user.name} is active...")
       daily_news_update.start()
-
+@bot.event
+async def on_message(message):
+      if message.author == bot.user:
+         return
+      await bot.process_commands(message)
 
 
 
@@ -62,14 +66,15 @@ async def daily_news_update():
 
 
 @bot.command()
-async def ping(ctx):
-    print ("right here")
-    await ctx.send("Pong!")
+async def news(ctx):
+       await ctx.send("Fetching latest tech news...")
+       articles=fetch_news()
+       message="\n\n".join(articles)
+       await ctx.send(message)
 
 
 
 bot.run(DISCORD_TOKEN)
-
 
 
 
