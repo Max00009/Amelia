@@ -11,7 +11,7 @@ load_dotenv()
 
 NEWSAPI_KEY=os.getenv("NEWSAPI_KEY")
 DISCORD_TOKEN=os.getenv("DISCORD_TOKEN")
-NEWS_CHANNEL_ID=os.getenv("NEWS_CHANNEL_ID")
+NEWS_CHANNEL_ID=int(os.getenv("NEWS_CHANNEL_ID"))
 
 
 
